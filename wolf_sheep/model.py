@@ -38,6 +38,8 @@ class WolfSheep(Model):
     grass_regrowth_time = 30
     sheep_gain_from_food = 4
 
+    diseaseLimiar = 0 # inicialmente, não vai comer nenhuma ovelha doente
+
     verbose = False  # Print-monitoring
 
     description = (
@@ -55,7 +57,8 @@ class WolfSheep(Model):
         wolf_gain_from_food=20,
         grass=False,
         grass_regrowth_time=30,
-        sheep_gain_from_food=4,
+        sheep_gain_from_food=4, 
+        diseaseLimiar = 0
     ):
         """
         Create a new Wolf-Sheep model with the given parameters.
@@ -83,6 +86,7 @@ class WolfSheep(Model):
         self.grass = grass
         self.grass_regrowth_time = grass_regrowth_time
         self.sheep_gain_from_food = sheep_gain_from_food
+        self.diseaseLimiar = diseaseLimiar
 
         self.schedule = RandomActivationByType(self)
         self.grid = MultiGrid(self.width, self.height, torus=True)
