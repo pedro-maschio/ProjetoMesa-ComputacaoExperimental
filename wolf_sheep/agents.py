@@ -15,7 +15,6 @@ class Sheep(RandomWalker):
         super().__init__(unique_id, pos, model, moore=moore)
         self.energy = energy
         self.diseaseProbability = self.random.random() # probabilidade de esta ovelha estar doente
-        print("disease probability ovelha: " + str(self.diseaseProbability))
 
     def step(self):
         """
@@ -80,8 +79,6 @@ class Wolf(RandomWalker):
                 # Kill the sheep
                 # Mesmo se estiver na mesma célula, vai comer a ovelha somente se a probabilidade de ela estiver doente
                 # for menor ou igual ao parâmetro informado na interface do usuário
-                print("Disease probability ovelha: " + str(sheep_to_eat.diseaseProbability))
-                print("Disease probability grid: " + str(self.model.diseaseLimiar))
                 self.model.grid._remove_agent(self.pos, sheep_to_eat)
                 self.model.schedule.remove(sheep_to_eat)
 

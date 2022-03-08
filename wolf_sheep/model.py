@@ -9,11 +9,14 @@ Replication of the model found in NetLogo:
     Northwestern University, Evanston, IL.
 """
 
+import os
 from mesa import Model
 from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 from mesa.time import RandomActivationByType
-
+from mesa.batchrunner import batch_run
+import pandas as pd
+import datetime
 
 from wolf_sheep.agents import Sheep, Wolf, GrassPatch
 
@@ -96,6 +99,7 @@ class WolfSheep(Model):
                 "Sheep": lambda m: m.schedule.get_type_count(Sheep),
             }
         )
+        self.running = True
 
         # Create sheep:
         for i in range(self.initial_sheep):
@@ -159,3 +163,32 @@ class WolfSheep(Model):
             print("")
             print("Final number wolves: ", self.schedule.get_type_count(Wolf))
             print("Final number sheep: ", self.schedule.get_type_count(Sheep))
+
+def roda():
+    params = {
+        "width": 20,
+        "height": 20,
+        "sheep_reproduce":0.04,
+        "wolf_reproduce":0.05,
+        "wolf_gain_from_food":20,
+        "grass":True,
+        "grass_regrowth_time":30,
+        "sheep_gain_from_food":4,
+        "initial_sheep": [50, 100, 150],
+        "initial_wolves": [50, 100, 150],
+        "diseaseLimiar":[0, 0.25, 0.50, 0.75]
+    }
+
+    results = batch_run(
+        WolfSheep,
+        params,
+        iterations=100,
+        data_collection_period=10,
+        max_steps=100
+    )
+
+    results_df = pd.DataFrame(results)
+    timestamp = str(datetime.datetime.now())
+
+    results_df.to_csv(timestamp +" - Execução 1.csv")
+    
