@@ -176,7 +176,7 @@ def roda():
         "sheep_gain_from_food":4,
         "initial_sheep": [50, 100, 150],
         "initial_wolves": [50, 100, 150],
-        "diseaseLimiar":[0, 0.25, 0.50, 0.75]
+        "diseaseLimiar": 0.50
     }
 
     results = batch_run(
@@ -190,5 +190,5 @@ def roda():
     results_df = pd.DataFrame(results)
     timestamp = str(datetime.datetime.now())
 
-    results_df.to_csv(timestamp +" - Execução 1.csv")
+    results_df.to_csv(timestamp +" - DiseaseLimiar 0.50.csv")
     

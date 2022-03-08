@@ -57,3 +57,7 @@ Segue abaixo uma descrição de cada umas das colunas das planilhas:
 - **diseaseLimiar**: limiar de doença, probabilidade.
 - **Wolves**: número de lobos vivos.
 - **Sheep**: número de ovelhas vivas.
+
+## Experimentos
+
+Foram executados três experimentos, com valores de `diseaseLimiar` variando nos valores 0, 0.25 e 0.50. Foram executadas 100 iterações, por no máximo 100 passos.
