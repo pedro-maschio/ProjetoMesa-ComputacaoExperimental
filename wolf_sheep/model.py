@@ -20,6 +20,10 @@ import datetime
 
 from wolf_sheep.agents import Sheep, Wolf, GrassPatch
 
+def numberWolvesAteIllSheep(model):
+    print("Comeram doentes: " + str (model.wolvesAteIllSheep))
+    return model.wolvesAteIllSheep
+
 
 class WolfSheep(Model):
     """
@@ -89,7 +93,9 @@ class WolfSheep(Model):
         self.grass = grass
         self.grass_regrowth_time = grass_regrowth_time
         self.sheep_gain_from_food = sheep_gain_from_food
+
         self.diseaseLimiar = diseaseLimiar
+        self.wolvesAteIllSheep = 0
 
         self.schedule = RandomActivationByType(self)
         self.grid = MultiGrid(self.width, self.height, torus=True)
@@ -97,6 +103,7 @@ class WolfSheep(Model):
             {
                 "Wolves": lambda m: m.schedule.get_type_count(Wolf),
                 "Sheep": lambda m: m.schedule.get_type_count(Sheep),
+                "#Wolves ate ill sheep": lambda m: numberWolvesAteIllSheep(m)
             }
         )
         self.running = True

@@ -35,6 +35,7 @@ As modificações e suas justificativas foram:
 - No comportamento do agente lobo, ficou definido que ele só vai comer a ovelha se sua `diseaseProbability` for maior ou igual ao `diseaseLimiar` definido pelo usuário.
 
 
+
 ## Planilhas
 
 Segue abaixo uma descrição de cada umas das colunas das planilhas:

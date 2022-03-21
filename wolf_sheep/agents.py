@@ -82,6 +82,8 @@ class Wolf(RandomWalker):
                 self.model.grid._remove_agent(self.pos, sheep_to_eat)
                 self.model.schedule.remove(sheep_to_eat)
 
+                self.model.wolvesAteIllSheep += 1
+
         # Death or reproduction
         if self.energy < 0:
             self.model.grid._remove_agent(self.pos, self)
