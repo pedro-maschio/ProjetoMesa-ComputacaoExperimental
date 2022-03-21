@@ -27,15 +27,13 @@ O modelo escolhido foi o [wolf_sheep](https://github.com/projectmesa/mesa/tree/m
 - Lobos comem as ovelhas se estiverem na mesma célula.
 
 ## Descrição da hipótese e das modificações
-Minha hipótese para a modificação da simulação foi adicionar a característica de probabilidade de "doença" no agente de Presa (na ovelha), de tal modo que um predador não vai querer comê-la. Quanto maior a probabilidade de estar doente, maior a probabilidade de esta ovelha não ser comida por um lobo. O limite
-de probabilidade que vai definir se a ovelha vai ser comida ou não poderá ser definido pelo usuário na interface da simulação.
+Minha hipótese para a modificação da simulação foi adicionar a característica de probabilidade de "doença" no agente de Presa (na ovelha), de tal modo que um predador vai querer comê-la com maior probabilidade (pois estará mais lenta). Quanto maior a probabilidade de estar doente, maior a probabilidade de esta ovelha ser comida por um lobo. O limite de probabilidade que vai definir se a ovelha vai ser comida ou não poderá ser definido pelo usuário na interface da simulação.
 
 As modificações e suas justificativas foram:
 - No modelo, foi adicionado a variável `diseaseLimiar`, que define um limiar de doença permitido para um lobo comer a ovelha. O valor mínimo é de 0.01, os passos são de 0.01 e o valor máximo é 1. 
 - Para cada ovelha foi adicionada a variável `diseaseProbability`, um valor real gerado aleatoriamente entre [0, 1), que define a probabilidade de esta determinada ovelha estar doente.
-- No comportamento do agente lobo, ficou definido que ele só vai comer a ovelha se sua `diseaseProbability` for inferior ou igual ao `diseaseLimiar` definido pelo usuário.
+- No comportamento do agente lobo, ficou definido que ele só vai comer a ovelha se sua `diseaseProbability` for maior ou igual ao `diseaseLimiar` definido pelo usuário.
 
-O que eu esperei ver com a mudança: quanto menor o valor do `diseaseLimiar`, maior a probabilidade de que as ovelhas vão prevalecer, pois os lobos só vão querer comer as ovelhas com o `diseaseProbability` muito baixo. Por outro lado, quanto maior o valor do `diseaseLimiar`, mais próximo esta simulação vai estar da simulação original, pois a verificação no agente do lobo vai se tornar irrelevante.
 
 ## Planilhas
 
