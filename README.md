@@ -23,11 +23,14 @@ model.roda()
 ## Descrição do modelo
 O modelo escolhido foi o [wolf_sheep](https://github.com/projectmesa/mesa/tree/main/examples/wolf_sheep) que é uma simulação sobre um sistema predador-presa. As características dessa simulação são:
 - Há três tipos de agentes: lobos, ovelhas e grama;
-- Os lobos e ovelhas perambulam pelo grid, ambos gastam energia ao andar. Lobos recarregam a energia ao comer ovelha, ovelhas recarregam a energia ao comer grama;
-- Lobos comem as ovelhas se estiverem na mesma célula.
+- Os lobos e ovelhas perambulam pelo grid, ambos gastam energia ao andar. Lobos recarregam a energia ao comer ovelhas, ovelhas recarregam a energia ao comer grama;
+- Lobos comem as ovelhas se estiverem na mesma célula (essa característica será modificada no experimento).
 
 ## Descrição da hipótese e das modificações
-Minha hipótese para a modificação da simulação foi adicionar a característica de probabilidade de "doença" no agente de Presa (na ovelha), de tal modo que um predador vai querer comê-la com maior probabilidade (pois estará mais lenta). Quanto maior a probabilidade de estar doente, maior a probabilidade de esta ovelha ser comida por um lobo. O limite de probabilidade que vai definir se a ovelha vai ser comida ou não poderá ser definido pelo usuário na interface da simulação.
+Minha hipótese para a modificação da simulação foi adicionar a característica de probabilidade de "doença" no agente de Presa (na ovelha), e também um limiar de probabilidade na interface do usuário. Mesmo se estiver na mesma célula, um lobo só vai comer a ovelha se sua probabilidade de doença for superior ao limiar definido na interface do usuário. A justificativa dessa adição, foi a percepção de que lobos preferem presas doentes, pois estão mais lentas. As ovelhas que possuírem probabilidade de doença inferior ao limiar definido pelo usuário na interface não serão comidas. 
+
+
+Minha modificação anterior tinha uma hipótese contrária a essa, mas após uma observação mais cuidadosa, percebi que na natureza, os animais preferem predar animais mais lentos e doentes, e não evitá-los.
 
 As modificações e suas justificativas foram:
 - No modelo, foi adicionado a variável `diseaseLimiar`, que define um limiar de doença permitido para um lobo comer a ovelha. O valor mínimo é de 0.01, os passos são de 0.01 e o valor máximo é 1. 
@@ -59,4 +62,3 @@ Segue abaixo uma descrição de cada umas das colunas das planilhas:
 
 ## Experimentos
 
-Foram executados três experimentos, com valores de `diseaseLimiar` variando nos valores 0, 0.25 e 0.50. Foram executadas 100 iterações, por no máximo 100 passos.

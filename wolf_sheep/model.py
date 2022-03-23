@@ -21,7 +21,6 @@ import datetime
 from wolf_sheep.agents import Sheep, Wolf, GrassPatch
 
 def numberWolvesAteIllSheep(model):
-    print("Comeram doentes: " + str (model.wolvesAteIllSheep))
     return model.wolvesAteIllSheep
 
 

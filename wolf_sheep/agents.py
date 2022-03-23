@@ -72,7 +72,7 @@ class Wolf(RandomWalker):
         sheep = [obj for obj in this_cell if isinstance(obj, Sheep)]
         if len(sheep) > 0:
             sheep_to_eat = self.random.choice(sheep)
-            if sheep_to_eat.diseaseProbability >= self.model.diseaseLimiar:
+            if self.model.diseaseLimiar <= sheep_to_eat.diseaseProbability:
                 
                 self.energy += self.model.wolf_gain_from_food
 
