@@ -33,7 +33,7 @@ Minha hipótese para a modificação da simulação foi adicionar a característ
 Minha modificação anterior tinha uma hipótese contrária a essa, mas após uma observação mais cuidadosa, percebi que na natureza, os animais preferem predar animais mais lentos e doentes, e não evitá-los.
 
 As modificações e suas justificativas foram:
-- No modelo, foi adicionado a variável `diseaseLimiar`, que define um limiar de doença permitido para um lobo comer a ovelha. O valor mínimo é de 0.01, os passos são de 0.01 e o valor máximo é 1. 
+- No modelo, foi adicionado a variável `diseaseLimiar`, que define um limiar de doença permitido para um lobo comer a ovelha. O valor mínimo é de 0, os passos são de 0.01 e o valor máximo é 1. 
 - Para cada ovelha foi adicionada a variável `diseaseProbability`, um valor real gerado aleatoriamente entre [0, 1), que define a probabilidade de esta determinada ovelha estar doente.
 - No comportamento do agente lobo, ficou definido que ele só vai comer a ovelha se sua `diseaseProbability` for maior ou igual ao `diseaseLimiar` definido pelo usuário.
 
@@ -62,3 +62,14 @@ Segue abaixo uma descrição de cada umas das colunas das planilhas:
 
 ## Experimentos
 
+Os experimentos foram conduzidos definindo as variáveis de controle nos seguintes valores:
+
+- `Grass Enabled`: Sim
+- `Disease Limiar`: 0
+- `Grass Regrowth Time`: 8
+- `Initial Sheep Population`: 100
+- `Sheep Reproduction Rate`: 0.2
+- `Initial Wolf Population`: 50
+- `Wolf Reproduction Rate`: 0.05
+- `Wolf Gain From Food Rate`: 16
+- `Sheep Gain From Food`: 4

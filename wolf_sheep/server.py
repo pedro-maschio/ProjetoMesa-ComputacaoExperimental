@@ -47,7 +47,7 @@ chart_element = ChartModule(
 
 model_params = {
     "grass": UserSettableParameter("checkbox", "Grass Enabled", True),
-    "diseaseLimiar": UserSettableParameter("slider", "Disease Limiar", 0, 0.01, 1.0, 0.01),
+    "diseaseLimiar": UserSettableParameter("slider", "Disease Limiar", 0, 0.00, 1.0, 0.01),
     "grass_regrowth_time": UserSettableParameter(
         "slider", "Grass Regrowth Time", 20, 1, 50
     ),
