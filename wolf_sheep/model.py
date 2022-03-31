@@ -193,9 +193,9 @@ def roda():
     results = batch_run(
         WolfSheep,
         params,
-        iterations=100,
-        data_collection_period=10,
-        max_steps=100
+        iterations=50,
+        data_collection_period=-1,
+        max_steps=600
     )
 
     results_df = pd.DataFrame(results)
