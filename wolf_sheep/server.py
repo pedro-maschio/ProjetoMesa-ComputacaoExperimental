@@ -42,7 +42,7 @@ def wolf_sheep_portrayal(agent):
 
 canvas_element = CanvasGrid(wolf_sheep_portrayal, 20, 20, 500, 500)
 chart_element = ChartModule(
-    [{"Label": "Wolves", "Color": "#AA0000"}, {"Label": "Sheep", "Color": "#666666"}, {"Label": "#Wolves ate ill sheep", "Color": "#0b1f94"}]
+    [{"Label": "Wolves", "Color": "#AA0000"}, {"Label": "Sheep", "Color": "#666666"}, {"Label": "Ill sheep rate", "Color": "#0b1f94"}]
 )
 
 model_params = {

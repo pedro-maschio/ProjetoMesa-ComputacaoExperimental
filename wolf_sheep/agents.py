@@ -52,9 +52,6 @@ class Sheep(RandomWalker):
 
 
 class Wolf(RandomWalker):
-    """
-    A wolf that walks around, reproduces (asexually) and eats sheep.
-    """
 
     energy = None
 
@@ -66,7 +63,7 @@ class Wolf(RandomWalker):
         self.random_move()
         self.energy -= 1
 
-        # If there are sheep present, eat one
+
         x, y = self.pos
         this_cell = self.model.grid.get_cell_list_contents([self.pos])
         sheep = [obj for obj in this_cell if isinstance(obj, Sheep)]
@@ -82,7 +79,7 @@ class Wolf(RandomWalker):
                 self.model.grid._remove_agent(self.pos, sheep_to_eat)
                 self.model.schedule.remove(sheep_to_eat)
 
-                self.model.wolvesAteIllSheep += 1
+                self.model.illSheep += 1
 
         # Death or reproduction
         if self.energy < 0:

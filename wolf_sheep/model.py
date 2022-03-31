@@ -20,8 +20,13 @@ import datetime
 
 from wolf_sheep.agents import Sheep, Wolf, GrassPatch
 
-def numberWolvesAteIllSheep(model):
-    return model.wolvesAteIllSheep
+def illSheepRate(model):
+    numberOfSheep = model.schedule.get_type_count(Sheep)
+    if numberOfSheep == 0:
+        return 0 
+    else:
+        retorno = model.illSheep / numberOfSheep
+        return retorno
 
 
 class WolfSheep(Model):
@@ -94,7 +99,7 @@ class WolfSheep(Model):
         self.sheep_gain_from_food = sheep_gain_from_food
 
         self.diseaseLimiar = diseaseLimiar
-        self.wolvesAteIllSheep = 0
+        self.illSheep = 0
 
         self.schedule = RandomActivationByType(self)
         self.grid = MultiGrid(self.width, self.height, torus=True)
@@ -102,7 +107,7 @@ class WolfSheep(Model):
             {
                 "Wolves": lambda m: m.schedule.get_type_count(Wolf),
                 "Sheep": lambda m: m.schedule.get_type_count(Sheep),
-                "#Wolves ate ill sheep": lambda m: numberWolvesAteIllSheep(m)
+                "Ill sheep rate": lambda m: illSheepRate(m)
             }
         )
         self.running = True
@@ -182,7 +187,7 @@ def roda():
         "sheep_gain_from_food":4,
         "initial_sheep": [50, 100, 150],
         "initial_wolves": [50, 100, 150],
-        "diseaseLimiar": 0.50
+        "diseaseLimiar": [0.0, 0.25, 0.5, 0.75, 1.0]
     }
 
     results = batch_run(
@@ -196,5 +201,5 @@ def roda():
     results_df = pd.DataFrame(results)
     timestamp = str(datetime.datetime.now())
 
-    results_df.to_csv(timestamp +" - DiseaseLimiar 0.50.csv")
+    results_df.to_csv(timestamp +" - DiseaseLimiar.csv")
     
